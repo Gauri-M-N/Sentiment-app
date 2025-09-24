@@ -10,7 +10,8 @@ app = FastAPI(title=settings.API_TITLE)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=settings.CORS_ORIGINS,              # keep localhost entries
+    allow_origin_regex=r"^https://.*\.streamlit\.app$",  # allow Streamlit Cloud
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
